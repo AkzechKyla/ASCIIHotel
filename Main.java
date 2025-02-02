@@ -8,7 +8,7 @@ abstract class Action {
         this.name = name;
     }
 
-    abstract void call();
+    abstract void call(UserInteraction userInteraction);
 }
 
 class UserInteraction {
@@ -32,7 +32,7 @@ class UserInteraction {
 
         if (choice >= 0 && choice < choices.length) {
             Action action = choices[choice];
-            action.call();
+            action.call(this);
         } else {
             System.out.println("Invalid choice!");
         }
@@ -43,20 +43,20 @@ public class Main {
     public static void main(String[] args) {
         final Action[] choices = {
             new Action("Play") {
-                void call() {
+                void call(UserInteraction userInteraction) {
                     System.out.println("Hello, World!");
                 }
             },
             new Action("Exit") {
-                void call() {
+                void call(UserInteraction userInteraction) {
                     System.out.println("Goodbye!");
                 }
             }
         };
 
-        final UserInteraction inter = new UserInteraction();
+        final UserInteraction userInteraction = new UserInteraction();
 
         System.out.println("ASCII HOTEL");
-        inter.nextInput(choices);
+        userInteraction.nextInput(choices);
     }
 }
