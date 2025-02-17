@@ -15,6 +15,9 @@ class UserInteraction {
     final Scanner scanner = new Scanner(System.in);
 
     void nextInput(Action[] choices) {
+        final Border border = new Border();
+        border.printHeader("Welcome to ASCII Hotel!");
+
         System.out.println("\nChoose your option:");
 
         for (int i = 0; i < choices.length; i++) {
@@ -27,6 +30,7 @@ class UserInteraction {
         try {
             choice = scanner.nextInt() - 1;
         } catch (InputMismatchException e) {
+            scanner.nextLine();
             choice = -1;
         }
 
@@ -35,6 +39,7 @@ class UserInteraction {
             action.call(this);
         } else {
             System.out.println("Invalid choice!");
+            nextInput(choices);
         }
     }
 }
