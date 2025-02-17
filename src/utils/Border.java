@@ -1,5 +1,7 @@
+package src.utils;
+
 public class Border {
-    void printHeader(String content) {
+    public void printHeader(String content) {
         String[] lines = content.split("\n");
         int maxWidth = 0;
 

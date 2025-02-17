@@ -1,5 +1,9 @@
+package src.game;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import src.utils.Border;
+import src.models.Player;
 
 abstract class Action {
     String name;
@@ -43,11 +47,11 @@ class UserInteraction {
         }
     }
 
-    void askPlayerName() {
+    String getPlayerName() {
         scanner.nextLine(); // Consume leftover newline
         System.out.print("\nEnter Player Name: ");
         String playerName = scanner.nextLine();
-        System.out.println(playerName);
+        return playerName;
     }
 }
 
@@ -56,7 +60,9 @@ public class Main {
         final Action[] choices = {
             new Action("New Game") {
                 void call(UserInteraction userInteraction) {
-                    userInteraction.askPlayerName();
+                    String playerName = userInteraction.getPlayerName();
+                    Player player = new Player(playerName, 500, 1);
+                    // System.out.println(player.getMoney());
                 }
             },
             new Action("Load Game") {

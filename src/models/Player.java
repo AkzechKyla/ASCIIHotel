@@ -1,3 +1,5 @@
+package src.models;
+
 public class Player {
     private String name;
     private double money;
