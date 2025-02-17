@@ -42,14 +42,26 @@ class UserInteraction {
             nextInput(choices);
         }
     }
+
+    void askPlayerName() {
+        scanner.nextLine(); // Consume leftover newline
+        System.out.print("\nEnter Player Name: ");
+        String playerName = scanner.nextLine();
+        System.out.println(playerName);
+    }
 }
 
 public class Main {
     public static void main(String[] args) {
         final Action[] choices = {
-            new Action("Play") {
+            new Action("New Game") {
                 void call(UserInteraction userInteraction) {
-                    System.out.println("Hello, World!");
+                    userInteraction.askPlayerName();
+                }
+            },
+            new Action("Load Game") {
+                void call(UserInteraction userInteraction) {
+                    System.out.println("Load Game... ");
                 }
             },
             new Action("Exit") {
@@ -60,8 +72,6 @@ public class Main {
         };
 
         final UserInteraction userInteraction = new UserInteraction();
-
-        System.out.println("ASCII HOTEL");
         userInteraction.nextInput(choices);
     }
 }
