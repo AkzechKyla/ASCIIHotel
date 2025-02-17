@@ -2,14 +2,13 @@ package src;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import src.utils.Border;
+import src.utils.PrettyPrint;
 
 public class UserInteraction {
     final Scanner scanner = new Scanner(System.in);
 
     public void nextInput(Action[] choices) {
-        final Border border = new Border();
-        border.printHeader("Welcome to ASCII Hotel!");
+        PrettyPrint.border("Welcome to ASCII Hotel!");
 
         System.out.println("\nChoose your option:");
 

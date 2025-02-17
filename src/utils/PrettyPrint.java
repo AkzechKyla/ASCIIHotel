@@ -1,7 +1,7 @@
 package src.utils;
 
-public class Border {
-    public void printHeader(String content) {
+public class PrettyPrint {
+    public static void border(String content) {
         String[] lines = content.split("\n");
         int maxWidth = 0;
 
