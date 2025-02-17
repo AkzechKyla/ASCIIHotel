@@ -1,7 +1,11 @@
 package src;
 
+import java.util.Scanner;
+import src.models.Player;
+
 class Game {
     private UserInteraction userInteraction;
+    private Player player;
 
     Game(UserInteraction userInteraction) {
         this.userInteraction = userInteraction;
@@ -42,5 +46,15 @@ class Game {
         };
 
         userInteraction.nextInput(choices);
+    }
+
+    void createNewPlayer() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("\nEnter Player Name: ");
+        String playerName = scanner.nextLine();
+        scanner.close();
+
+        this.player = new Player(playerName);
     }
 }

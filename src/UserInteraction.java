@@ -34,11 +34,4 @@ public class UserInteraction {
             nextInput(choices);
         }
     }
-
-    String getPlayerName() {
-        scanner.nextLine(); // Consume leftover newline
-        System.out.print("\nEnter Player Name: ");
-        String playerName = scanner.nextLine();
-        return playerName;
-    }
 }
