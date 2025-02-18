@@ -1,12 +1,13 @@
 package src;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         final Action[] choices = {
             new Action("New Game") {
                 public void call(UserInteraction userInteraction) {
                     Game game = new Game(userInteraction);
                     game.createNewPlayer();
+                    game.getMainChoices();
                 }
             },
             new Action("Load Game") {

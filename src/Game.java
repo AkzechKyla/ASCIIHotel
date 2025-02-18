@@ -1,6 +1,5 @@
 package src;
 
-import java.util.Scanner;
 import src.models.Player;
 
 class Game {
@@ -42,6 +41,11 @@ class Game {
                 public void call(UserInteraction userInteraction) {
                     System.out.println("Ending the Day...");
                 }
+            },
+            new Action("Go to Main Menu") {
+                public void call(UserInteraction userInteraction) {
+                    Main.main(null);
+                }
             }
         };
 
@@ -49,11 +53,8 @@ class Game {
     }
 
     void createNewPlayer() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.print("\nEnter Player Name: ");
-        String playerName = scanner.nextLine();
-        scanner.close();
+        String playerName = userInteraction.scanner.nextLine();
 
         this.player = new Player(playerName);
     }
