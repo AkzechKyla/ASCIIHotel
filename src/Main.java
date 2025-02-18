@@ -5,9 +5,9 @@ public class Main {
         final Action[] choices = {
             new Action("New Game") {
                 public void call(UserInteraction userInteraction) {
-                    Game game = new Game(userInteraction);
-                    game.createNewPlayer();
-                    game.getMainChoices();
+                    Game game = new Game();
+                    game.createNewPlayer(userInteraction);
+                    game.getMainChoices(userInteraction);
                 }
             },
             new Action("Load Game") {
