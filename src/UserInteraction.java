@@ -12,10 +12,10 @@ public class UserInteraction {
         System.out.flush();
     }
 
-    public void nextInput(Action[] choices) {
+    public void nextInput(String content, Action[] choices) {
         clearScreen();
 
-        PrettyPrint.border("Welcome to ASCII Hotel!");
+        PrettyPrint.border(content);
 
         System.out.println("\nChoose your option:");
 
@@ -39,7 +39,7 @@ public class UserInteraction {
             action.call(this);
         } else {
             System.out.println("Invalid choice!");
-            nextInput(choices);
+            nextInput(content, choices);
         }
     }
 }

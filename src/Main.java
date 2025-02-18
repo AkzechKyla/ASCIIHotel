@@ -23,6 +23,7 @@ public class Main {
         };
 
         final UserInteraction userInteraction = new UserInteraction();
-        userInteraction.nextInput(choices);
+        String headerContent = "Welcome to ASCII Hotel!";
+        userInteraction.nextInput(headerContent, choices);
     }
 }

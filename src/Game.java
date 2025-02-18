@@ -4,7 +4,9 @@ import src.models.Player;
 
 class Game {
     private UserInteraction userInteraction;
-    private Player player;
+    Player player;
+    private double balance;
+    private int currentDay;
 
     Game(UserInteraction userInteraction) {
         this.userInteraction = userInteraction;
@@ -12,11 +14,6 @@ class Game {
 
     void getMainChoices() {
         final Action[] choices = {
-            new Action("Check Finances") {
-                public void call(UserInteraction userInteraction) {
-                    System.out.println("Checking Finances...");
-                }
-            },
             new Action("Advertise") {
                 public void call(UserInteraction userInteraction) {
                     System.out.println("Checking Advertisements...");
@@ -49,7 +46,11 @@ class Game {
             }
         };
 
-        userInteraction.nextInput(choices);
+        String headerContent = String.format("Day: %d", this.getCurrentDay() )
+            + String.format("\n" + "Player: %s", player.getName())
+            + String.format("\n" + "Balance: %.2f", this.getBalance());
+
+        userInteraction.nextInput(headerContent, choices);
     }
 
     void createNewPlayer() {
@@ -57,5 +58,15 @@ class Game {
         String playerName = userInteraction.scanner.nextLine();
 
         this.player = new Player(playerName);
+        this.balance = 500;
+        this.currentDay = 1;
+    }
+
+    int getCurrentDay() {
+        return this.currentDay;
+    }
+
+    double getBalance() {
+        return this.balance;
     }
 }
