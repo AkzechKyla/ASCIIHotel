@@ -7,7 +7,14 @@ import src.utils.PrettyPrint;
 public class UserInteraction {
     final Scanner scanner = new Scanner(System.in);
 
+    private void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     public void nextInput(Action[] choices) {
+        clearScreen();
+
         PrettyPrint.border("Welcome to ASCII Hotel!");
 
         System.out.println("\nChoose your option:");
@@ -21,6 +28,7 @@ public class UserInteraction {
 
         try {
             choice = scanner.nextInt() - 1;
+            scanner.nextLine();
         } catch (InputMismatchException e) {
             scanner.nextLine();
             choice = -1;
