@@ -60,11 +60,13 @@ class Game {
     void buyNewRoom(UserInteraction userInteraction) {
         String headerContent = "Buy a New Room" + String.format("\n" + "Balance: $%.2f", Game.this.getBalance());
 
+        RoomType singleRoom = RoomType.SINGLE;
+
         final Action[] choices = {
             new Action("Single Room") {
                 public void call(UserInteraction userInteraction) {
-                    Game.this.balance -= 2000;
-                    System.out.println("\nYou bought a Single Room.\nNew Balance: $" + Game.this.getBalance());
+                    deductBalance(singleRoom.getPropertyPrice());
+                    System.out.println("\nYou bought a Single Room.\nNew Balance: $" + getBalance());
 
                     System.out.print("\nPress Enter to continue...");
                     userInteraction.scanner.nextLine();
@@ -75,6 +77,10 @@ class Game {
         };
 
         userInteraction.nextInput(headerContent, choices);
+    }
+
+    void deductBalance(int amount) {
+        this.balance -= amount;
     }
 
     int getCurrentDay() {
